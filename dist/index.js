@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"src/models/User.ts":[function(require,module,exports) {
+})({"models/User.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -130,9 +130,7 @@ var User =
 function () {
   //-constructor :
   function User(data) {
-    this.data = data; //-propertise :
-
-    this.events = {};
+    this.data = data;
   } //-Methods :
 
 
@@ -142,26 +140,9 @@ function () {
 
   User.prototype.set = function (update) {
     Object.assign(this.data, update);
-  }; //-Stores the events for the Class User :
-
-
-  User.prototype.on = function (eventName, callback) {
-    var handlers = this.events[eventName] || [];
-    handlers.push(callback);
-    this.events[eventName] = handlers;
   };
 
-  User.prototype.trigger = function (eventName) {
-    var handlers = this.events[eventName];
-
-    if (!handlers || handlers.length === 0) {
-      return;
-    }
-
-    handlers.forEach(function (callback) {
-      callback();
-    });
-  };
+  User.prototype.on = function (eventName, callback) {};
 
   return User;
 }();
@@ -180,21 +161,18 @@ var user = new User_1.User({
   name: 'karim',
   age: 26
 });
-user.on('click', function () {
-  console.log('click');
+console.log(user.get('name'));
+console.log(user.get('age'));
+user.set({
+  name: 'Andrew',
+  age: 32
 });
-user.on('change', function () {
-  console.log('change1');
+user.set({
+  name: 'sara'
 });
-user.on('change', function () {
-  console.log('change2');
-}); // user.on('scroll', () => {});
-
-console.log('user', user.events);
-user.trigger('change');
-user.trigger('click');
-user.trigger('call');
-},{"./models/User":"src/models/User.ts"}],"C:/Users/Moustamid/AppData/Roaming/nvm/v14.15.4/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+console.log(user.get('name'));
+console.log(user.get('age'));
+},{"./models/User":"models/User.ts"}],"C:/Users/Moustamid/AppData/Roaming/nvm/v14.15.4/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -222,7 +200,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51756" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51736" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -399,4 +377,4 @@ function hmrAcceptRun(bundle, id) {
   }
 }
 },{}]},{},["C:/Users/Moustamid/AppData/Roaming/nvm/v14.15.4/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/index.ts"], null)
-//# sourceMappingURL=/src.f10117fe.js.map
+//# sourceMappingURL=/index.js.map
