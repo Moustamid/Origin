@@ -1,20 +1,19 @@
 import { User } from './models/User';
 
-const user = new User({ name: 'karim', age: 26 });
+const user = new User({ name: 'karim', age: 20 });
 
 user.on('click', () => {
-  console.log('click');
+  console.log('Click#1 Event trigred');
 });
-user.on('change', () => {
-  console.log('change1');
-});
-user.on('change', () => {
-  console.log('change2');
-});
-// user.on('scroll', () => {});
 
-console.log('user', user.events);
+user.on('click', () => {
+  console.log('Click#2  Event trigred');
+});
 
-user.trigger('change');
+user.on('hover', () => {
+  console.log('hover#1  Event trigred');
+});
+
 user.trigger('click');
-user.trigger('call');
+
+// console.log('user.events', user.events);

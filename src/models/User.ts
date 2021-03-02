@@ -2,18 +2,18 @@ interface UserProps {
   name?: string;
   age?: number;
 }
-
-type callback = () => void;
+//-type alias :
+type Callback = () => void;
 
 export class User {
-  //-propertise :
-  events: { [key: string]: callback[] } = {};
-  //-constructor :
+  //-properties :
+  events: { [key: string]: Callback[] } = {};
+
   constructor(private data: UserProps) {}
 
   //-Methods :
 
-  get(propName: string): number | string {
+  get(propName: string): string | number {
     return this.data[propName];
   }
 
@@ -21,13 +21,16 @@ export class User {
     Object.assign(this.data, update);
   }
 
-  //-Stores the events for the Class User :
-  on(eventName: string, callback: callback): void {
-    const handlers = this.events[eventName] || [];
+  //-Events :
+  //! we want to store a collection of events with there respectice callback array :
 
+  on(eventName: string, callback: Callback): void {
+    const handlers = this.events[eventName] || [];
     handlers.push(callback);
     this.events[eventName] = handlers;
   }
+
+  //! trigger every callback fct of the specified event prop :
 
   trigger(eventName: string): void {
     const handlers = this.events[eventName];
@@ -35,9 +38,8 @@ export class User {
     if (!handlers || handlers.length === 0) {
       return;
     }
-
     handlers.forEach((callback) => {
-      callback();
+      console.log(callback);
     });
   }
 }

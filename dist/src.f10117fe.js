@@ -128,9 +128,8 @@ exports.User = void 0;
 var User =
 /** @class */
 function () {
-  //-constructor :
   function User(data) {
-    this.data = data; //-propertise :
+    this.data = data; //-properties :
 
     this.events = {};
   } //-Methods :
@@ -142,14 +141,16 @@ function () {
 
   User.prototype.set = function (update) {
     Object.assign(this.data, update);
-  }; //-Stores the events for the Class User :
+  }; //-Events :
+  //! we want to store a collection of events with there respectice callback array :
 
 
   User.prototype.on = function (eventName, callback) {
     var handlers = this.events[eventName] || [];
     handlers.push(callback);
     this.events[eventName] = handlers;
-  };
+  }; //! trigger every callback fct of the specified event prop :
+
 
   User.prototype.trigger = function (eventName) {
     var handlers = this.events[eventName];
@@ -159,7 +160,7 @@ function () {
     }
 
     handlers.forEach(function (callback) {
-      callback();
+      console.log(callback);
     });
   };
 
@@ -178,22 +179,18 @@ var User_1 = require("./models/User");
 
 var user = new User_1.User({
   name: 'karim',
-  age: 26
+  age: 20
 });
 user.on('click', function () {
-  console.log('click');
+  console.log('Click#1 Event trigred');
 });
-user.on('change', function () {
-  console.log('change1');
+user.on('click', function () {
+  console.log('Click#2  Event trigred');
 });
-user.on('change', function () {
-  console.log('change2');
-}); // user.on('scroll', () => {});
-
-console.log('user', user.events);
-user.trigger('change');
-user.trigger('click');
-user.trigger('call');
+user.on('hover', function () {
+  console.log('hover#1  Event trigred');
+});
+user.trigger('click'); // console.log('user.events', user.events);
 },{"./models/User":"src/models/User.ts"}],"C:/Users/Moustamid/AppData/Roaming/nvm/v14.15.4/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -222,7 +219,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51756" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65042" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
