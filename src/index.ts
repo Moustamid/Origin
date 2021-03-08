@@ -6,6 +6,11 @@ user.set({ name: 'karim', age: 9999 });
 
 user.save();
 
-const user2 = new User({ name: 'stephen', age: 9999 });
+user.events.on('change', () => {
+  console.log('change');
+});
 
-user2.save();
+user.events.trigger('change');
+// const user2 = new User({ name: 'stephen', age: 9999 });
+
+// user2.save();
