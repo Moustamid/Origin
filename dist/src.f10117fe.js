@@ -2081,19 +2081,12 @@ Object.defineProperty(exports, "__esModule", {
 var User_1 = require("./models/User");
 
 var user = new User_1.User({
-  id: 1
-});
-user.set({
   name: 'karim',
   age: 9999
 });
-user.save();
-user.events.on('change', function () {
-  console.log('change');
-});
-user.events.trigger('change'); // const user2 = new User({ name: 'stephen', age: 9999 });
-// user2.save();
-// http://localhost:3000/users
+user.attributes.get('id');
+user.attributes.get('name');
+user.attributes.get('age'); // user.sync.save();  FIXME: better refactering solution ...
 },{"./models/User":"src/models/User.ts"}],"C:/Users/Moustamid/AppData/Roaming/nvm/v14.15.4/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

@@ -1,18 +1,8 @@
 import { User } from './models/User';
 
-const user = new User({ id: 1 });
+const user = new User({ name: 'karim', age: 9999 });
 
-user.set({ name: 'karim', age: 9999 });
-
-user.save();
-
-user.events.on('change', () => {
-  console.log('change');
-});
-
-user.events.trigger('change');
-// const user2 = new User({ name: 'stephen', age: 9999 });
-
-// user2.save();
-
-// http://localhost:3000/users
+user.attributes.get('id');
+user.attributes.get('name');
+user.attributes.get('age');
+// user.sync.save();  FIXME: better refactering solution ...
