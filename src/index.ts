@@ -14,3 +14,5 @@ user.events.trigger('change');
 // const user2 = new User({ name: 'stephen', age: 9999 });
 
 // user2.save();
+
+// http://localhost:3000/users

@@ -3,6 +3,7 @@ type Callback = () => void;
 
 export class Eventing {
   // SECTION: properties :
+  //! events is an object of key : [callbacks ...] pairs , evry event 'key' has a collection '[]' of callbacks
   events: { [key: string]: Callback[] } = {};
 
   // SECTION: Methods :
