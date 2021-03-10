@@ -2067,6 +2067,27 @@ function () {
     this.attributes = new Attributes_1.Attributes(attributes);
   }
 
+  Object.defineProperty(User.prototype, "on", {
+    get: function get() {
+      return this.events.on;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(User.prototype, "trigger", {
+    get: function get() {
+      return this.events.trigger;
+    },
+    enumerable: false,
+    configurable: true
+  });
+  Object.defineProperty(User.prototype, "get", {
+    get: function get() {
+      return this.attributes.get;
+    },
+    enumerable: false,
+    configurable: true
+  });
   return User;
 }();
 
@@ -2084,9 +2105,11 @@ var user = new User_1.User({
   name: 'karim',
   age: 9999
 });
-user.attributes.get('id');
-user.attributes.get('name');
-user.attributes.get('age'); // user.sync.save();  FIXME: better refactering solution ...
+user.on('click', function () {
+  console.log('user has click');
+});
+user.get('name');
+console.log(user);
 },{"./models/User":"src/models/User.ts"}],"C:/Users/Moustamid/AppData/Roaming/nvm/v14.15.4/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -2115,7 +2138,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58005" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49504" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
